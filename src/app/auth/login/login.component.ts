@@ -1,16 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent {
-  constructor(private toastr: ToastrService) {}
+export class LoginComponent implements OnDestroy {
+  unsubscribe$ = new Subject<void>();
+
+  constructor(private authService: AuthService) {}
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
 
   loginUser(event: FormGroup): void {
-    this.toastr.success('Hello world!', 'Toastr fun!');
+    this.authService
+      .login(event.value)
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe();
   }
 }
