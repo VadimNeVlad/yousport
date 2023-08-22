@@ -5,10 +5,17 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
-  declarations: [],
-  imports: [CommonModule],
-  exports: [MatToolbarModule, MatCardModule, MatInputModule, MatButtonModule],
+  declarations: [HeaderComponent],
+  imports: [CommonModule, MatToolbarModule],
+  exports: [
+    MatToolbarModule,
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule,
+    HeaderComponent,
+  ],
 })
 export class SharedModule {}
