@@ -1,5 +1,24 @@
-<mat-toolbar color="primary">
+<mat-toolbar class="header" color="primary">
   <mat-toolbar-row>
-    <span>YouSport</span>
+    <div class="header__row">
+      <div class="header__left-col">
+        <span>YouSport</span>
+        <nav *ngIf="isLoggedIn" class="header__nav">
+          <a mat-button routerlink="/schedule">Schedule</a>
+          <a mat-button href="">Meals</a>
+          <a mat-button href="">Workouts</a>
+        </nav>
+      </div>
+
+      <button
+        *ngIf="isLoggedIn"
+        mat-icon-button
+        class="example-icon favorite-icon"
+        aria-label="Example icon-button with heart icon"
+        (click)="onLogout()"
+      >
+        <mat-icon>logout</mat-icon>
+      </button>
+    </div>
   </mat-toolbar-row>
 </mat-toolbar>
