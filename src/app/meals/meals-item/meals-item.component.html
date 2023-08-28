@@ -1,0 +1,25 @@
+<div class="meals-item">
+  <div class="meals-item__title">
+    <h4>{{ meal.name }}</h4>
+    <span>{{ meal.ingredients }}</span>
+  </div>
+  <div class="meals-item__controls">
+    <div *ngIf="toggled" class="meals-item__delete-content">
+      <p>Delete item?</p>
+      <div class="meals-item__delete-btns">
+        <button mat-raised-button color="warn" (click)="onDeleteMeal(meal.id!)">
+          Yes
+        </button>
+        <button mat-button (click)="toggle()">No</button>
+      </div>
+    </div>
+    <button
+      mat-icon-button
+      type="button"
+      class="delete-btn favorite-icon"
+      (click)="toggle()"
+    >
+      <mat-icon class="white-icon">delete</mat-icon>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="meals-list">
+  <mat-card>
+    <mat-card-header>
+      <div class="meals-list__header">
+        <div class="meals-list__title">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            fontIcon="favorite"
+            class="white-icon"
+          ></mat-icon>
+          <h2>Your Meals</h2>
+        </div>
+
+        <button routerLink="/meals/new" mat-raised-button color="primary">
+          New Meal
+        </button>
+      </div>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div
+        *ngIf="meals$ | async as meals; else loading"
+        class="meals-list__content"
+      >
+        <h2 class="meals-list__empty" *ngIf="!meals.length">
+          No meals, add new meal to start!
+        </h2>
+        <app-meals-item
+          *ngFor="let meal of meals; trackBy: trackById"
+          [meal]="meal"
+          (deleteMeal)="deleteMeal($event)"
+        ></app-meals-item>
+      </div>
+
+      <ng-template #loading>
+        <p class="loader">Loading Meals...</p>
+      </ng-template>
+    </mat-card-content>
+  </mat-card>
+</div>

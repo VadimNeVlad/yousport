@@ -1,0 +1,76 @@
+<form [formGroup]="form" class="meal-form">
+  <div class="meal-form__name-row">
+    <h4>Meal Name</h4>
+    <mat-form-field class="example-form-field">
+      <input
+        matInput
+        type="text"
+        placeholder="e.g. English Breakfast"
+        formControlName="name"
+      />
+    </mat-form-field>
+    <mat-error
+      *ngIf="
+        form.get('name')?.hasError('required') && form.get('name')?.touched
+      "
+    >
+      Meal name is required
+    </mat-error>
+  </div>
+
+  <div class="meal-form__ingredients-row">
+    <h4>Food</h4>
+    <button
+      mat-raised-button
+      type="button"
+      color="accent"
+      (click)="addIngredient()"
+    >
+      Add Food
+    </button>
+  </div>
+  <div
+    formArrayName="ingredients"
+    *ngFor="let ingredient of ingredients.controls; index as i"
+    class="meal-form__ingredient-field"
+  >
+    <div class="meal-form__ingredient__field-row">
+      <mat-form-field class="example-form-field">
+        <input
+          [formControlName]="i"
+          matInput
+          type="text"
+          placeholder="e.g. Eggs"
+        />
+      </mat-form-field>
+      <button
+        mat-icon-button
+        type="button"
+        class="delete-btn favorite-icon"
+        (click)="removeIngredient(i)"
+      >
+        <mat-icon class="white-icon">delete</mat-icon>
+      </button>
+    </div>
+
+    <mat-error
+      *ngIf="ingredient.invalid && ingredient.touched"
+      class="ingresient-error"
+    >
+      Ingredient is required
+    </mat-error>
+  </div>
+
+  <div class="meal-form__btns">
+    <button
+      [disabled]="this.form.invalid"
+      mat-raised-button
+      type="submit"
+      color="primary"
+      (click)="onSubmit()"
+    >
+      Create Meal
+    </button>
+    <a routerLink="/meals" mat-button>Cancel</a>
+  </div>
+</form>

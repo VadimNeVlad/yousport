@@ -1,0 +1,46 @@
+.meal-form {
+  h4 {
+    font-size: 18px;
+    color: #fff;
+    margin: 0;
+    padding-bottom: 10px;
+  }
+
+  &__name-row {
+    padding-top: 40px;
+    padding-bottom: 30px;
+  }
+
+  &__ingredients-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 15px;
+
+    h4 {
+      padding-bottom: 0;
+    }
+  }
+
+  &__ingredient__field-row {
+    display: flex;
+    justify-content: space-between;
+
+    .mat-mdc-form-field {
+      width: 92%;
+    }
+  }
+}
+
+.mat-mdc-form-field {
+  width: 100%;
+  display: block;
+}
+
+.delete-btn {
+  margin-top: 5px;
+}
+
+.ingresient-error {
+  padding-bottom: 20px;
+}

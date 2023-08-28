@@ -8,6 +8,8 @@ import { AuthModule } from './auth/auth.module';
 import { SharedModule } from './shared/shared.module';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
+import { ScheduleModule } from './schedule/schedule.module';
+import { MealsModule } from './meals/meals.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
       timeOut: 3000,
       positionClass: 'toast-bottom-center',
     }),
+    ScheduleModule,
+    MealsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
