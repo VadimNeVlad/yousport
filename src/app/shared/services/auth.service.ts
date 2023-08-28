@@ -5,13 +5,16 @@ import { Observable, catchError, map, throwError, BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environment/environment';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private _baseUrl = environment.apiUrl;
+
   isLoggedIn$ = new BehaviorSubject<boolean>(false);
+  user$ = new BehaviorSubject<User | null>(null);
 
   constructor(
     private http: HttpClient,
@@ -42,7 +45,11 @@ export class AuthService {
       .pipe(
         map((authData: AuthResponse) => {
           localStorage.setItem('token', authData.accessToken);
+          localStorage.setItem('user', JSON.stringify(authData.user));
+
           this.isLoggedIn$.next(true);
+          this.user$.next(authData.user);
+          this.router.navigateByUrl('/schedule');
           return authData;
         }),
 
@@ -54,13 +61,18 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
+    const user = JSON.parse(localStorage.getItem('user')!);
+
     this.isLoggedIn$.next(!!localStorage.getItem('token'));
+    this.user$.next(user);
+
     return !!localStorage.getItem('token');
   }
 
   logout(): void {
     this.isLoggedIn$.next(false);
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
     this.router.navigateByUrl('/');
   }
 }

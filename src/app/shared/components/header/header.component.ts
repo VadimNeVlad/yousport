@@ -5,6 +5,7 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-header',
@@ -14,6 +15,8 @@ import {
 })
 export class HeaderComponent {
   @Input() isLoggedIn = false;
+  @Input() user: User | null = null;
+
   @Output() logout = new EventEmitter<void>();
 
   constructor() {}

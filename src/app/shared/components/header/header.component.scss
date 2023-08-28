@@ -13,4 +13,19 @@
   &__left-col {
     display: flex;
   }
+
+  &__info-panel {
+    display: flex;
+    align-items: center;
+
+    p {
+      font-size: 14px;
+      margin: 0;
+      padding-right: 15px;
+    }
+  }
+}
+
+.active {
+  background-color: rgba(0, 0, 0, 0.2);
 }

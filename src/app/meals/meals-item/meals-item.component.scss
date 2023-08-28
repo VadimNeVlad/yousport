@@ -1,0 +1,36 @@
+.meals-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+
+  &__title {
+    h4 {
+      color: #fff;
+      margin: 0;
+    }
+
+    span {
+      color: #c4c4c4;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+  }
+
+  &__delete-content {
+    display: flex;
+    align-items: center;
+
+    p {
+      margin: 0;
+      color: #fff;
+    }
+  }
+
+  &__delete-btns {
+    padding-left: 10px;
+  }
+}

@@ -4,6 +4,24 @@
       "email": "qwery@gmail.com",
       "password": "$2a$10$DwPlrawPGcDGBbq4EHUGY.A.twkuY2LjXx7EAwuLLPHrbk2gIWI9e",
       "id": 1
+    },
+    {
+      "email": "test@gmail.com",
+      "password": "$2a$10$73ia5Sv/vB567ZLdqwZw5ukjRtNeFfOnLaWxggheqWd3nkSV2lh5W",
+      "id": 2
+    }
+  ],
+  "meals": [
+    {
+      "name": "Oates",
+      "ingredients": [
+        "Oates",
+        "Milk",
+        "Sugar"
+      ],
+      "uid": 2,
+      "timestamp": 1693222806543,
+      "id": 1
     }
   ]
 }
