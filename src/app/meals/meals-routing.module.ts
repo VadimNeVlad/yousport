@@ -17,6 +17,10 @@ const routes: Routes = [
         path: 'meals/new',
         component: NewMealComponent,
       },
+      {
+        path: 'meals/:id',
+        component: NewMealComponent,
+      },
     ],
   },
 ];

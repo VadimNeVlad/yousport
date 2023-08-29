@@ -29,6 +29,15 @@ export class MealsService {
     );
   }
 
+  getMeal(mealId: string): Observable<Meal> {
+    return this.http.get<Meal>(`${this._baseUrl}/meals/${mealId}`).pipe(
+      catchError((e: HttpErrorResponse) => {
+        this.toastr.error(e.message);
+        return throwError(() => e);
+      })
+    );
+  }
+
   addMeal(meal: Meal): Observable<Meal> {
     const uid = this.authService.user$.value?.id;
 
@@ -55,6 +64,7 @@ export class MealsService {
   deleteMeal(mealId: number): Observable<void> {
     return this.http.delete<void>(`${this._baseUrl}/meals/${mealId}`).pipe(
       map(() => {
+        this.router.navigateByUrl('/meals');
         this.toastr.success('Meal deleted successfully');
       }),
 
@@ -63,5 +73,22 @@ export class MealsService {
         return throwError(() => e);
       })
     );
+  }
+
+  updateMeal(meal: Meal): Observable<Meal> {
+    return this.http
+      .patch<Meal>(`${this._baseUrl}/meals/${meal.id}`, meal)
+      .pipe(
+        map((meal: Meal) => {
+          this.router.navigateByUrl('/meals');
+          this.toastr.success('Meal changed successfully');
+          return meal;
+        }),
+
+        catchError((e: HttpErrorResponse) => {
+          this.toastr.error(e.message);
+          return throwError(() => e);
+        })
+      );
   }
 }
