@@ -13,15 +13,26 @@
   ],
   "meals": [
     {
-      "name": "Oates",
+      "name": "English Breakfast",
       "ingredients": [
-        "Oates",
-        "Milk",
+        "Eggs",
+        "Toast",
+        "Tomatos",
+        "Potato"
+      ],
+      "uid": 2,
+      "timestamp": 1693235650506,
+      "id": 2
+    },
+    {
+      "name": "Oaties",
+      "ingredients": [
+        "Oats",
         "Sugar"
       ],
       "uid": 2,
-      "timestamp": 1693222806543,
-      "id": 1
+      "timestamp": 1693307620980,
+      "id": 3
     }
   ]
 }

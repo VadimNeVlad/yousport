@@ -30,6 +30,29 @@
       width: 92%;
     }
   }
+
+  &__btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__btns-delete {
+    display: flex;
+    align-items: center;
+  }
+
+  &__delete-content {
+    display: flex;
+    align-items: center;
+    padding-right: 15px;
+
+    p {
+      color: #fff;
+      margin: 0;
+      padding-right: 15px;
+    }
+  }
 }
 
 .mat-mdc-form-field {

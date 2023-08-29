@@ -62,15 +62,53 @@
   </div>
 
   <div class="meal-form__btns">
-    <button
-      [disabled]="this.form.invalid"
-      mat-raised-button
-      type="submit"
-      color="primary"
-      (click)="onSubmit()"
-    >
-      Create Meal
-    </button>
-    <a routerLink="/meals" mat-button>Cancel</a>
+    <div class="meal-form__btns-control">
+      <button
+        *ngIf="!exist"
+        [disabled]="this.form.invalid"
+        mat-raised-button
+        type="submit"
+        color="primary"
+        (click)="onSubmit()"
+      >
+        Create Meal
+      </button>
+      <button
+        *ngIf="exist"
+        [disabled]="this.form.invalid"
+        mat-raised-button
+        type="submit"
+        color="primary"
+        (click)="onUpdate()"
+      >
+        Save Meal
+      </button>
+      <a routerLink="/meals" mat-button>Cancel</a>
+    </div>
+
+    <div *ngIf="exist" class="meal-form__btns-delete">
+      <div *ngIf="toggled" class="meal-form__delete-content">
+        <p>Delete Meal?</p>
+        <div class="meals-form__delete-btns">
+          <button
+            mat-raised-button
+            color="warn"
+            (click)="onDeleteMeal(meal.id!)"
+          >
+            Yes
+          </button>
+          <button mat-button (click)="toggle()">No</button>
+        </div>
+      </div>
+      <button
+        mat-raised-button
+        color="warn"
+        type="button"
+        class="delete-btn favorite-icon"
+        (click)="toggle()"
+      >
+        Delete
+      </button>
+    </div>
   </div>
 </form>
