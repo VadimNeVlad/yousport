@@ -34,5 +34,39 @@
       "timestamp": 1693307620980,
       "id": 3
     }
+  ],
+  "workouts": [
+    {
+      "name": "Pullups",
+      "type": "strength",
+      "strength": {
+        "reps": 10,
+        "sets": 3,
+        "weight": 70
+      },
+      "endurance": {
+        "distance": 0,
+        "duration": 0
+      },
+      "uid": 2,
+      "timestamp": 1693399529302,
+      "id": 1
+    },
+    {
+      "name": "Jogging",
+      "type": "endurance",
+      "strength": {
+        "reps": 0,
+        "sets": 0,
+        "weight": 0
+      },
+      "endurance": {
+        "distance": 5,
+        "duration": 30
+      },
+      "uid": 2,
+      "timestamp": 1693404007437,
+      "id": 2
+    }
   ]
 }

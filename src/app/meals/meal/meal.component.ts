@@ -5,11 +5,11 @@ import { Meal } from 'src/app/shared/models/meal';
 import { MealsService } from 'src/app/shared/services/meals.service';
 
 @Component({
-  selector: 'app-new-meal',
-  templateUrl: './new-meal.component.html',
-  styleUrls: ['./new-meal.component.scss'],
+  selector: 'app-meal',
+  templateUrl: './meal.component.html',
+  styleUrls: ['./meal.component.scss'],
 })
-export class NewMealComponent implements OnInit, OnDestroy {
+export class MealComponent implements OnInit, OnDestroy {
   mealId = '';
 
   meal$ = new Observable<Meal>();

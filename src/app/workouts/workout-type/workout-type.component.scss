@@ -1,0 +1,15 @@
+.workout-type {
+  display: flex;
+  align-items: center;
+  padding-bottom: 50px;
+
+  &__pane {
+    padding-right: 15px;
+  }
+}
+
+.active {
+  button {
+    background-color: #000;
+  }
+}

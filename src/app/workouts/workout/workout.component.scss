@@ -1,0 +1,18 @@
+.workout {
+  padding-top: 100px;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+
+  &__title {
+    display: flex;
+    align-items: center;
+
+    h2 {
+      font-size: 26px;
+      margin: 0;
+      padding-left: 10px;
+      color: #fff;
+    }
+  }
+}

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MealsComponent } from './meals.component';
-import { NewMealComponent } from './new-meal/new-meal.component';
+import { MealComponent } from './meal/meal.component';
 import { MealsListComponent } from './meals-list/meals-list.component';
 
 const routes: Routes = [
@@ -14,12 +14,12 @@ const routes: Routes = [
         component: MealsListComponent,
       },
       {
-        path: 'meals/new',
-        component: NewMealComponent,
+        path: 'new',
+        component: MealComponent,
       },
       {
-        path: 'meals/:id',
-        component: NewMealComponent,
+        path: ':id',
+        component: MealComponent,
       },
     ],
   },

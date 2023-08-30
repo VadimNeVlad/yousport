@@ -8,9 +8,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { HeaderComponent } from './components/header/header.component';
 import { RouterModule } from '@angular/router';
+import { JoinPipe } from './pipes/join.pipe';
+import { WorkoutPipe } from './pipes/workout.pipe';
 
 @NgModule({
-  declarations: [HeaderComponent],
+  declarations: [HeaderComponent, JoinPipe, WorkoutPipe],
   imports: [
     CommonModule,
     MatToolbarModule,
@@ -25,6 +27,8 @@ import { RouterModule } from '@angular/router';
     MatButtonModule,
     HeaderComponent,
     MatIconModule,
+    JoinPipe,
+    WorkoutPipe,
   ],
 })
 export class SharedModule {}

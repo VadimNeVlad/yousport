@@ -15,6 +15,12 @@ const routes: Routes = [
     loadChildren: () =>
       import('./meals/meals.module').then((m) => m.MealsModule),
   },
+  {
+    path: 'workouts',
+    canActivate: [authGuard],
+    loadChildren: () =>
+      import('./workouts/workouts.module').then((m) => m.WorkoutsModule),
+  },
 ];
 
 @NgModule({
