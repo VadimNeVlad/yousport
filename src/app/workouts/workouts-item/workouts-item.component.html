@@ -1,0 +1,29 @@
+<div class="workouts-item">
+  <a class="workouts-item__title" [routerLink]="workout.id?.toString()">
+    <h4>{{ workout.name }}</h4>
+    <span>{{ workout | workout }}</span>
+  </a>
+  <div class="workouts-item__controls">
+    <div *ngIf="toggled" class="workouts-item__delete-content">
+      <p>Delete item?</p>
+      <div class="workouts-item__delete-btns">
+        <button
+          mat-raised-button
+          color="warn"
+          (click)="onDeleteWorkout(workout.id!)"
+        >
+          Yes
+        </button>
+        <button mat-button (click)="toggle()">No</button>
+      </div>
+    </div>
+    <button
+      mat-icon-button
+      type="button"
+      class="delete-btn favorite-icon"
+      (click)="toggle()"
+    >
+      <mat-icon class="white-icon">delete</mat-icon>
+    </button>
+  </div>
+</div>

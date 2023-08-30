@@ -1,7 +1,7 @@
 <div class="meals-item">
   <a class="meals-item__title" [routerLink]="meal.id?.toString()">
     <h4>{{ meal.name }}</h4>
-    <span>{{ meal.ingredients }}</span>
+    <span>{{ meal.ingredients | join }}</span>
   </a>
   <div class="meals-item__controls">
     <div *ngIf="toggled" class="meals-item__delete-content">

@@ -23,7 +23,7 @@
         *ngIf="meals$ | async as meals; else loading"
         class="meals-list__content"
       >
-        <h2 class="meals-list__empty" *ngIf="!meals.length">
+        <h2 *ngIf="!meals.length" class="meals-list__empty">
           No meals, add new meal to start!
         </h2>
         <app-meals-item

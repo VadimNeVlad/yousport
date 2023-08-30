@@ -10,6 +10,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 import { ScheduleModule } from './schedule/schedule.module';
 import { MealsModule } from './meals/meals.module';
+import { WorkoutsModule } from './workouts/workouts.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,6 +27,7 @@ import { MealsModule } from './meals/meals.module';
     }),
     ScheduleModule,
     MealsModule,
+    WorkoutsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

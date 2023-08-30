@@ -1,0 +1,16 @@
+<div class="workout-type">
+  <div
+    *ngFor="let selector of selectors"
+    [class.active]="selector === value"
+    class="workout-type__pane"
+  >
+    <button
+      mat-raised-button
+      type="button"
+      color="primary"
+      (click)="setSelected(selector)"
+    >
+      {{ selector }}
+    </button>
+  </div>
+</div>
