@@ -1,0 +1,12 @@
+<div class="days">
+  <div *ngFor="let day of days; index as i" class="days__item">
+    <button
+      [class.active]="i === selected"
+      mat-fab
+      color="primary"
+      (click)="onSelectDay(i)"
+    >
+      {{ day }}
+    </button>
+  </div>
+</div>

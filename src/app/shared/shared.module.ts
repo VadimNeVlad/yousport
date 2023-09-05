@@ -6,6 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { HeaderComponent } from './components/header/header.component';
 import { RouterModule } from '@angular/router';
 import { JoinPipe } from './pipes/join.pipe';
@@ -25,6 +26,7 @@ import { WorkoutPipe } from './pipes/workout.pipe';
     MatCardModule,
     MatInputModule,
     MatButtonModule,
+    MatCheckboxModule,
     HeaderComponent,
     MatIconModule,
     JoinPipe,

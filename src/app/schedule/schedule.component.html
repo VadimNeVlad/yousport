@@ -1,1 +1,26 @@
-<p>schedule works!</p>
+<div class="schedule">
+  <mat-card>
+    <mat-card-header>
+      <div class="schedule__title">
+        <mat-icon
+          aria-hidden="false"
+          fontIcon="schedule"
+          class="white-icon"
+        ></mat-icon>
+        <h2>Your Schedule</h2>
+      </div>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="schedule__list" *ngIf="scheduleList$ | async as scheduleList">
+        <app-schedule-item
+          *ngFor="let schedule of scheduleList"
+          [schedule]="schedule"
+          [meals]="(meals$ | async)!"
+          [workouts]="(workouts$ | async)!"
+          (update)="updateSchedule($event)"
+        ></app-schedule-item>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

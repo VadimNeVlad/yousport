@@ -1,0 +1,64 @@
+<div class="schedule-assign">
+  <div class="schedule-assign__modal">
+    <div class="schedule-assign__title">
+      <h2>Assign {{ selected }}</h2>
+      <button
+        [routerLink]="getRoute(selected)"
+        mat-raised-button
+        color="primary"
+      >
+        New {{ selected }}
+      </button>
+    </div>
+
+    <div class="schedule-assign__list">
+      <ng-container *ngIf="selected === 'Meals'">
+        <h3 *ngIf="!meals.length" class="schedule-assign__empty">
+          Nothing to assign
+        </h3>
+
+        <div
+          *ngFor="let meal of meals; trackBy: trackMealsById"
+          class="schedule-assign__list-item"
+        >
+          <mat-checkbox
+            class="example-margin"
+            (change)="onChange($event)"
+            [value]="meal.name"
+            >{{ meal.name }}</mat-checkbox
+          >
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="selected === 'Workouts'">
+        <h3 *ngIf="!workouts.length" class="schedule-assign__empty">
+          Nothing to assign
+        </h3>
+
+        <div
+          *ngFor="let workout of workouts; trackBy: trackWorkoutsById"
+          class="schedule-assign__list-item"
+        >
+          <mat-checkbox
+            class="example-margin"
+            (change)="onChange($event)"
+            [value]="workout.name"
+            >{{ workout.name }}</mat-checkbox
+          >
+        </div>
+      </ng-container>
+    </div>
+
+    <button mat-raised-button color="primary" (click)="onUpdateSchedule()">
+      Update
+    </button>
+    <button
+      mat-raised-button
+      color="warn"
+      class="cancel-btn"
+      (click)="onCloseModal()"
+    >
+      Cancel
+    </button>
+  </div>
+</div>
