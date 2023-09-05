@@ -6,6 +6,7 @@ import { environment } from 'src/environment/environment';
 import { AuthService } from './auth.service';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { Workout } from '../models/workout';
+import { Schedule } from '../models/schedule';
 
 @Injectable({
   providedIn: 'root',
@@ -21,12 +22,14 @@ export class WorkoutsService {
   ) {}
 
   getWorkouts(): Observable<Workout[]> {
-    return this.http.get<Workout[]>(`${this._baseUrl}/workouts`).pipe(
-      catchError((e: HttpErrorResponse) => {
-        this.toastr.error(e.message);
-        return throwError(() => e);
-      })
-    );
+    return this.http
+      .get<Workout[]>(`${this._baseUrl}/workouts/?uid=${this.uid}`)
+      .pipe(
+        catchError((e: HttpErrorResponse) => {
+          this.toastr.error(e.message);
+          return throwError(() => e);
+        })
+      );
   }
 
   getWorkout(workoutId: string): Observable<Workout> {
@@ -43,7 +46,7 @@ export class WorkoutsService {
   addWorkout(workout: Workout): Observable<Workout> {
     const updatedWorkout: Workout = {
       ...workout,
-      uid: this.authService.user$.value?.id,
+      uid: this.uid,
       timestamp: Date.now(),
     };
 
@@ -94,5 +97,9 @@ export class WorkoutsService {
           return throwError(() => e);
         })
       );
+  }
+
+  private get uid(): number {
+    return this.authService.user$.value?.id!;
   }
 }

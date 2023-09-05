@@ -1,6 +1,7 @@
 import { User } from './user';
 
 export interface AuthData {
+  id?: number;
   email: string;
   password: string;
 }

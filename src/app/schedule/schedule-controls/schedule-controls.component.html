@@ -1,0 +1,9 @@
+<div class="controls">
+  <button mat-icon-button (click)="onMoveDate(offset - 1)">
+    <mat-icon>arrow_back_ios</mat-icon>
+  </button>
+  <p>{{ selectedDate | date : "dd MMMM yyyy" }}</p>
+  <button mat-icon-button (click)="onMoveDate(offset + 1)">
+    <mat-icon>arrow_forward_ios</mat-icon>
+  </button>
+</div>

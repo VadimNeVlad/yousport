@@ -21,12 +21,14 @@ export class MealsService {
   ) {}
 
   getMeals(): Observable<Meal[]> {
-    return this.http.get<Meal[]>(`${this._baseUrl}/meals`).pipe(
-      catchError((e: HttpErrorResponse) => {
-        this.toastr.error(e.message);
-        return throwError(() => e);
-      })
-    );
+    return this.http
+      .get<Meal[]>(`${this._baseUrl}/meals/?uid=${this.uid}`)
+      .pipe(
+        catchError((e: HttpErrorResponse) => {
+          this.toastr.error(e.message);
+          return throwError(() => e);
+        })
+      );
   }
 
   getMeal(mealId: string): Observable<Meal> {
@@ -39,11 +41,9 @@ export class MealsService {
   }
 
   addMeal(meal: Meal): Observable<Meal> {
-    const uid = this.authService.user$.value?.id;
-
     const updatedMeal: Meal = {
       ...meal,
-      uid,
+      uid: this.uid,
       timestamp: Date.now(),
     };
 
@@ -90,5 +90,9 @@ export class MealsService {
           return throwError(() => e);
         })
       );
+  }
+
+  private get uid(): number {
+    return this.authService.user$.value?.id!;
   }
 }

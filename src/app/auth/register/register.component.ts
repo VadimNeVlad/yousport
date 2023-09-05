@@ -1,7 +1,9 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, map, switchMap, takeUntil } from 'rxjs';
+import { ScheduleService } from 'src/app/shared/services/schedule.service';
+import { AuthResponse } from 'src/app/shared/models/auth';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +13,10 @@ import { Subject, takeUntil } from 'rxjs';
 export class RegisterComponent implements OnDestroy {
   unsubscribe$ = new Subject<void>();
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private scheduleService: ScheduleService
+  ) {}
 
   ngOnDestroy(): void {
     this.unsubscribe$.next();
@@ -21,7 +26,12 @@ export class RegisterComponent implements OnDestroy {
   registerUser(event: FormGroup): void {
     this.authService
       .register(event.value)
-      .pipe(takeUntil(this.unsubscribe$))
+      .pipe(
+        switchMap((authData) =>
+          this.scheduleService.createNewUserSchedule(authData.user.id)
+        ),
+        takeUntil(this.unsubscribe$)
+      )
       .subscribe();
   }
 }

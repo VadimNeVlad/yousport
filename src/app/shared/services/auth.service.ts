@@ -18,7 +18,7 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private tostr: ToastrService,
+    private toastr: ToastrService,
     private router: Router
   ) {}
 
@@ -27,13 +27,13 @@ export class AuthService {
       .post<AuthResponse>(`${this._baseUrl}/register`, registerData)
       .pipe(
         map((authData: AuthResponse) => {
-          this.tostr.success('Registration completed successfully');
+          this.toastr.success('Registration completed successfully');
           this.router.navigateByUrl('/');
           return authData;
         }),
 
         catchError((e: HttpErrorResponse) => {
-          this.tostr.error(e.message);
+          this.toastr.error(e.message);
           return throwError(() => e);
         })
       );
@@ -54,7 +54,7 @@ export class AuthService {
         }),
 
         catchError((e: HttpErrorResponse) => {
-          this.tostr.error('Incorrect email or password');
+          this.toastr.error('Incorrect email or password');
           return throwError(() => e);
         })
       );
