@@ -1,9 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { Subject, map, switchMap, takeUntil } from 'rxjs';
+import { Subject, switchMap, takeUntil } from 'rxjs';
 import { ScheduleService } from 'src/app/shared/services/schedule.service';
-import { AuthResponse } from 'src/app/shared/models/auth';
 
 @Component({
   selector: 'app-register',

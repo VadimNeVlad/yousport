@@ -24,38 +24,35 @@ export class AuthService {
 
   register(registerData: AuthData): Observable<AuthResponse> {
     return this.http
-      .post<AuthResponse>(`${this._baseUrl}/register`, registerData)
+      .post<AuthResponse>(`${this._baseUrl}/auth/register`, registerData)
       .pipe(
         map((authData: AuthResponse) => {
           this.toastr.success('Registration completed successfully');
-          this.router.navigateByUrl('/');
+          this.setCredentials(authData);
+          this.router.navigateByUrl('/schedule');
           return authData;
         }),
 
         catchError((e: HttpErrorResponse) => {
-          this.toastr.error(e.message);
-          return throwError(() => e);
+          this.toastr.error(e.error.message);
+          return throwError(() => e.error.message);
         })
       );
   }
 
   login(loginData: AuthData): Observable<AuthResponse> {
     return this.http
-      .post<AuthResponse>(`${this._baseUrl}/login`, loginData)
+      .post<AuthResponse>(`${this._baseUrl}/auth/login`, loginData)
       .pipe(
         map((authData: AuthResponse) => {
-          localStorage.setItem('token', authData.accessToken);
-          localStorage.setItem('user', JSON.stringify(authData.user));
-
-          this.isLoggedIn$.next(true);
-          this.user$.next(authData.user);
+          this.setCredentials(authData);
           this.router.navigateByUrl('/schedule');
           return authData;
         }),
 
         catchError((e: HttpErrorResponse) => {
-          this.toastr.error('Incorrect email or password');
-          return throwError(() => e);
+          this.toastr.error(e.error.message);
+          return throwError(() => e.error.message);
         })
       );
   }
@@ -74,5 +71,13 @@ export class AuthService {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     this.router.navigateByUrl('/');
+  }
+
+  private setCredentials(authData: AuthResponse): void {
+    localStorage.setItem('token', authData.accessToken);
+    localStorage.setItem('user', JSON.stringify(authData.user));
+
+    this.isLoggedIn$.next(true);
+    this.user$.next(authData.user);
   }
 }

@@ -1,6 +1,118 @@
 {
-  "users": [],
-  "meals": [],
-  "workouts": [],
-  "schedules": []
+  "users": [
+    {
+      "email": "test@gmail.com",
+      "password": "$2a$10$/RN0IEGi23EfJTGUqTv9Me63qa8ROKh2v.KKtD8P/cqNsD9oTqc9u",
+      "id": 1
+    }
+  ],
+  "meals": [
+    {
+      "name": "Breakfast",
+      "ingredients": [
+        "Eggs",
+        "Salt"
+      ],
+      "uid": 1,
+      "timestamp": 1696193080470,
+      "id": 1
+    },
+    {
+      "name": "Oats",
+      "ingredients": [
+        "Oats"
+      ],
+      "uid": 1,
+      "timestamp": 1696193099246,
+      "id": 2
+    }
+  ],
+  "workouts": [
+    {
+      "name": "Press",
+      "type": "strength",
+      "strength": {
+        "reps": 1,
+        "sets": 22,
+        "weight": 60
+      },
+      "endurance": {
+        "distance": 0,
+        "duration": 0
+      },
+      "uid": 1,
+      "timestamp": 1708643441579,
+      "id": 1
+    },
+    {
+      "name": "treadmill",
+      "type": "endurance",
+      "strength": {
+        "reps": 0,
+        "sets": 0,
+        "weight": 0
+      },
+      "endurance": {
+        "distance": 121,
+        "duration": 60
+      },
+      "uid": 1,
+      "timestamp": 1708643746485,
+      "id": 2
+    }
+  ],
+  "schedules": [
+    {
+      "uid": 1,
+      "assignments": [
+        {
+          "meals": [
+            {
+              "name": "Breakfast"
+            }
+          ],
+          "workouts": [],
+          "day": "Thursday",
+          "key": 3
+        },
+        {
+          "day": "Monday",
+          "meals": [],
+          "workouts": [],
+          "key": 0
+        },
+        {
+          "day": "Tuesday",
+          "meals": [],
+          "workouts": [],
+          "key": 1
+        },
+        {
+          "day": "Wednesday",
+          "meals": [],
+          "workouts": [],
+          "key": 2
+        },
+        {
+          "day": "Friday",
+          "meals": [],
+          "workouts": [],
+          "key": 4
+        },
+        {
+          "day": "Saturday",
+          "meals": [],
+          "workouts": [],
+          "key": 5
+        },
+        {
+          "day": "Sunday",
+          "meals": [],
+          "workouts": [],
+          "key": 6
+        }
+      ],
+      "id": 1
+    }
+  ]
 }

@@ -1,6 +1,3 @@
-import { Meal } from './meal';
-import { Workout } from './workout';
-
 export interface Schedule {
   id?: number;
   uid?: number;
