@@ -21,8 +21,7 @@ export class WorkoutComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.workoutId = this.route.snapshot.paramMap.get('id') || '';
-
+    this.workoutId = this.route.snapshot.paramMap.get('id') as string;
     if (this.workoutId) this.getWorkout();
   }
 
@@ -49,7 +48,7 @@ export class WorkoutComponent implements OnInit, OnDestroy {
       .subscribe();
   }
 
-  deleteWorkout(workoutId: number): void {
+  deleteWorkout(workoutId: string): void {
     this.workoutsService
       .deleteWorkout(workoutId)
       .pipe(takeUntil(this.unsubscribe$))

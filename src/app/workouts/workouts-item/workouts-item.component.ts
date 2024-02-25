@@ -17,11 +17,11 @@ export class WorkoutsItemComponent {
   toggled = false;
 
   @Input() workout!: Workout;
-  @Output() deleteWorkout = new EventEmitter<number>();
+  @Output() deleteWorkout = new EventEmitter<string>();
 
   constructor() {}
 
-  onDeleteWorkout(workoutId: number): void {
+  onDeleteWorkout(workoutId: string): void {
     this.deleteWorkout.emit(workoutId);
   }
 

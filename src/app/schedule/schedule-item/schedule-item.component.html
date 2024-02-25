@@ -1,97 +1,92 @@
 <div class="schedule-item">
-  <div *ngFor="let assignment of sortedAssignments" class="schedule-item__wrap">
-    <h2>{{ assignment.day }}</h2>
+  <h2>{{ assignment.day }}</h2>
 
-    <div class="schedule-item__controls">
+  <div class="schedule-item__controls">
+    <div *ngIf="!assignment.meals?.length" class="schedule-item__control-item">
       <div
-        *ngIf="!assignment.meals?.length"
-        class="schedule-item__control-item"
+        class="schedule-item__title"
+        (click)="
+          toggleModal({
+            type: 'Meals',
+            day: assignment.day || '',
+            key: assignment.key || 0
+          })
+        "
       >
-        <div
-          class="schedule-item__title"
-          (click)="
-            toggleModal({
-              type: 'Meals',
-              day: assignment.day || '',
-              key: assignment.key || 0
-            })
-          "
-        >
-          <mat-icon
-            aria-hidden="false"
-            fontIcon="add"
-            class="white-icon"
-          ></mat-icon>
-          <p>Add Meal</p>
-        </div>
+        <mat-icon
+          aria-hidden="false"
+          fontIcon="add"
+          class="white-icon"
+        ></mat-icon>
+        <p>Add Meal</p>
       </div>
+    </div>
 
+    <div
+      *ngFor="let meal of assignment.meals; trackBy: trackMealByName"
+      class="schedule-item__list"
+    >
       <div
-        *ngFor="let meal of assignment.meals; trackBy: trackMealByName"
-        class="schedule-item__list"
+        class="schedule-item__list-item"
+        (click)="
+          toggleModal({
+            type: 'Meals',
+            day: assignment.day || '',
+            key: assignment.key || 0
+          })
+        "
       >
-        <div
-          class="schedule-item__list-item"
-          (click)="
-            toggleModal({
-              type: 'Meals',
-              day: assignment.day || '',
-              key: assignment.key || 0
-            })
-          "
-        >
-          <mat-icon
-            aria-hidden="false"
-            fontIcon="favorite"
-            class="white-icon"
-          ></mat-icon>
-          <p>{{ meal.name }}</p>
-        </div>
+        <mat-icon
+          aria-hidden="false"
+          fontIcon="favorite"
+          class="white-icon"
+        ></mat-icon>
+        <p>{{ meal.name }}</p>
       </div>
+    </div>
+    <div
+      *ngIf="!assignment.workouts?.length"
+      class="schedule-item__control-item"
+    >
       <div
-        *ngIf="!assignment.workouts?.length"
-        class="schedule-item__control-item"
+        class="schedule-item__title"
+        (click)="
+          toggleModal({
+            type: 'Workouts',
+            day: assignment.day || '',
+            key: assignment.key || 0
+          })
+        "
       >
-        <div
-          class="schedule-item__title"
-          (click)="
-            toggleModal({
-              type: 'Workouts',
-              day: assignment.day || '',
-              key: assignment.key || 0
-            })
-          "
-        >
-          <mat-icon
-            aria-hidden="false"
-            fontIcon="add"
-            class="white-icon"
-          ></mat-icon>
-          <p>Add Workout</p>
-        </div>
+        <mat-icon
+          aria-hidden="false"
+          fontIcon="add"
+          class="white-icon"
+        ></mat-icon>
+        <p>Add Workout</p>
       </div>
+    </div>
 
+    <div
+      *ngFor="let workout of assignment.workouts; trackBy: trackWorkoutByName"
+      class="schedule-item__list"
+    >
       <div
-        *ngFor="let workout of assignment.workouts; trackBy: trackWorkoutByName"
-        class="schedule-item__list"
+        class="schedule-item__list-item"
+        (click)="
+          toggleModal({
+            type: 'Workouts',
+            day: assignment.day || '',
+            key: assignment.key || 0
+          })
+        "
       >
-        <div
-          class="schedule-item__list-item"
-          (click)="
-            toggleModal({
-              type: 'Workouts',
-              day: assignment.day || '',
-              key: assignment.key || 0
-            })
-          "
-        >
-          <mat-icon
-            aria-hidden="false"
-            fontIcon="fitness_center"
-            class="white-icon"
-          ></mat-icon>
-          <p>{{ workout.name }}</p>
-        </div>
+        <mat-icon
+          aria-hidden="false"
+          fontIcon="fitness_center"
+          class="white-icon"
+        ></mat-icon>
+        <p>{{ workout.name }}</p>
       </div>
     </div>
   </div>
@@ -99,8 +94,8 @@
   <app-schedule-assign
     *ngIf="open"
     [selected]="selectedType"
-    [meals]="meals"
-    [workouts]="workouts"
+    [meals]="assignment.meals"
+    [workouts]="assignment.workouts"
     (update)="onUpdateSchedule($event)"
     (close)="open = false"
   ></app-schedule-assign>

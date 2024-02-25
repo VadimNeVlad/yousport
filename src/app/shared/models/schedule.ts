@@ -1,7 +1,9 @@
+import { Assignment } from './assignment';
+
 export interface Schedule {
-  id?: number;
-  uid?: number;
-  assignments: ScheduleItem[];
+  id: string;
+  userId: string;
+  assignments: Assignment[];
 }
 
 export interface ScheduleItem {

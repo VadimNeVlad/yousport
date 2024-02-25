@@ -1,9 +1,12 @@
+import { Endurance } from './endurance';
+import { Strength } from './strength';
+
 export interface Workout {
-  id?: number;
-  uid?: number;
+  id: string;
   name: string;
   type: string;
-  strength: any;
-  endurance: any;
-  timestamp?: number;
+  userId: string;
+  strength: Strength;
+  endurance: Endurance;
+  assignmentId: string;
 }

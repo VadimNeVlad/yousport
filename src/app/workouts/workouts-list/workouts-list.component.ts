@@ -27,14 +27,14 @@ export class WorkoutsListComponent implements OnInit, OnDestroy {
     this.workouts$ = this.workoutsService.getWorkouts();
   }
 
-  deleteWorkout(workoutId: number): void {
+  deleteWorkout(workoutId: string): void {
     this.workoutsService
       .deleteWorkout(workoutId)
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe(() => this.getWorkouts());
   }
 
-  trackById(idx: number, workout: Workout): number {
-    return workout.id!;
+  trackById(idx: number, workout: Workout): string {
+    return workout.id;
   }
 }

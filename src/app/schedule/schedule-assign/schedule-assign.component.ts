@@ -36,8 +36,8 @@ export class ScheduleAssignComponent {
     return meal.id!;
   }
 
-  trackWorkoutsById(idx: number, workout: Workout): number {
-    return workout.id!;
+  trackWorkoutsById(idx: number, workout: Workout): string {
+    return workout.id;
   }
 
   onChange(event: any) {

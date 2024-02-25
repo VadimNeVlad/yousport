@@ -25,12 +25,7 @@ export class RegisterComponent implements OnDestroy {
   registerUser(event: FormGroup): void {
     this.authService
       .register(event.value)
-      .pipe(
-        switchMap((authData) =>
-          this.scheduleService.createNewUserSchedule(authData.user.id)
-        ),
-        takeUntil(this.unsubscribe$)
-      )
+      .pipe(takeUntil(this.unsubscribe$))
       .subscribe();
   }
 }

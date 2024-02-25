@@ -22,14 +22,12 @@ export class WorkoutsService {
   ) {}
 
   getWorkouts(): Observable<Workout[]> {
-    return this.http
-      .get<Workout[]>(`${this._baseUrl}/workouts/?uid=${this.uid}`)
-      .pipe(
-        catchError((e: HttpErrorResponse) => {
-          this.toastr.error(e.message);
-          return throwError(() => e);
-        })
-      );
+    return this.http.get<Workout[]>(`${this._baseUrl}/workouts`).pipe(
+      catchError((e: HttpErrorResponse) => {
+        this.toastr.error(e.error.message);
+        return throwError(() => e);
+      })
+    );
   }
 
   getWorkout(workoutId: string): Observable<Workout> {
@@ -37,38 +35,30 @@ export class WorkoutsService {
       .get<Workout>(`${this._baseUrl}/workouts/${workoutId}`)
       .pipe(
         catchError((e: HttpErrorResponse) => {
-          this.toastr.error(e.message);
+          this.toastr.error(e.error.message);
           return throwError(() => e);
         })
       );
   }
 
   addWorkout(workout: Workout): Observable<Workout> {
-    const updatedWorkout: Workout = {
-      ...workout,
-      uid: this.uid,
-      timestamp: Date.now(),
-    };
+    return this.http.post<Workout>(`${this._baseUrl}/workouts`, workout).pipe(
+      map((workout: Workout) => {
+        this.toastr.success('Workout added successfully');
+        this.router.navigateByUrl('/workouts');
+        return workout;
+      }),
 
-    return this.http
-      .post<Workout>(`${this._baseUrl}/workouts`, updatedWorkout)
-      .pipe(
-        map((workout: Workout) => {
-          this.toastr.success('Workout added successfully');
-          this.router.navigateByUrl('/workouts');
-          return workout;
-        }),
-
-        catchError((e: HttpErrorResponse) => {
-          this.toastr.error(e.message);
-          return throwError(() => e);
-        })
-      );
+      catchError((e: HttpErrorResponse) => {
+        this.toastr.error(e.error.message);
+        return throwError(() => e);
+      })
+    );
   }
 
   updateWorkout(workout: Workout): Observable<Workout> {
     return this.http
-      .patch<Workout>(`${this._baseUrl}/workouts/${workout.id}`, workout)
+      .put<Workout>(`${this._baseUrl}/workouts/${workout.id}`, workout)
       .pipe(
         map((workout: Workout) => {
           this.toastr.success('Workout changed successfully');
@@ -77,13 +67,13 @@ export class WorkoutsService {
         }),
 
         catchError((e: HttpErrorResponse) => {
-          this.toastr.error(e.message);
+          this.toastr.error(e.error.message);
           return throwError(() => e);
         })
       );
   }
 
-  deleteWorkout(workoutId: number): Observable<void> {
+  deleteWorkout(workoutId: string): Observable<void> {
     return this.http
       .delete<void>(`${this._baseUrl}/workouts/${workoutId}`)
       .pipe(
@@ -93,13 +83,9 @@ export class WorkoutsService {
         }),
 
         catchError((e: HttpErrorResponse) => {
-          this.toastr.error(e.message);
+          this.toastr.error(e.error.message);
           return throwError(() => e);
         })
       );
-  }
-
-  private get uid(): number {
-    return this.authService.user$.value?.id!;
   }
 }

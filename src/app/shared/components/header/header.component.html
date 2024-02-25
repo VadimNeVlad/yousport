@@ -2,7 +2,7 @@
   <mat-toolbar-row>
     <div class="header__row">
       <div class="header__left-col">
-        <span>YouSport</span>
+        <a routerLink="/schedule" class="header__logo">YouSport</a>
         <nav *ngIf="isLoggedIn" class="header__nav">
           <a mat-button routerLink="/schedule" routerLinkActive="active"
             >Schedule</a

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
@@ -29,6 +29,7 @@ import { WorkoutPipe } from './pipes/workout.pipe';
     MatCheckboxModule,
     HeaderComponent,
     MatIconModule,
+    MatProgressSpinnerModule,
     JoinPipe,
     WorkoutPipe,
   ],

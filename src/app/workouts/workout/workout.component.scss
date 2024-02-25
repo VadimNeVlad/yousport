@@ -15,4 +15,11 @@
       color: #fff;
     }
   }
+
+  &__loader {
+    display: flex;
+    min-height: 421px;
+    justify-content: center;
+    align-items: center;
+  }
 }

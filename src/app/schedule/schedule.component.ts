@@ -13,21 +13,13 @@ import { Workout } from '../shared/models/workout';
   styleUrls: ['./schedule.component.scss'],
 })
 export class ScheduleComponent implements OnInit, OnDestroy {
-  scheduleList$ = new Observable<Schedule[]>();
-  meals$ = new Observable<Meal[]>();
-  workouts$ = new Observable<Workout[]>();
+  schedule$ = new Observable<Schedule>();
   unsubscribe$ = new Subject<void>();
 
-  constructor(
-    private scheduleService: ScheduleService,
-    private mealsService: MealsService,
-    private workoutsService: WorkoutsService
-  ) {}
+  constructor(private scheduleService: ScheduleService) {}
 
   ngOnInit(): void {
     this.getSchedule();
-    this.getMeals();
-    this.getWorkouts();
   }
 
   ngOnDestroy(): void {
@@ -36,15 +28,7 @@ export class ScheduleComponent implements OnInit, OnDestroy {
   }
 
   getSchedule(): void {
-    this.scheduleList$ = this.scheduleService.getSchedule();
-  }
-
-  getMeals(): void {
-    this.meals$ = this.mealsService.getMeals();
-  }
-
-  getWorkouts(): void {
-    this.workouts$ = this.workoutsService.getWorkouts();
+    this.schedule$ = this.scheduleService.getSchedule();
   }
 
   updateSchedule(scheduleItem: ScheduleItem): void {

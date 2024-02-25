@@ -37,7 +37,7 @@ export class WorkoutFormComponent implements OnChanges {
   @Input() workout!: Workout;
   @Output() submitWorkout = new EventEmitter<Workout>();
   @Output() updateWorkout = new EventEmitter<Workout>();
-  @Output() deleteWorkout = new EventEmitter<number>();
+  @Output() deleteWorkout = new EventEmitter<string>();
 
   constructor(private fb: FormBuilder) {}
 
@@ -69,7 +69,7 @@ export class WorkoutFormComponent implements OnChanges {
     }
   }
 
-  onDeleteWorkout(workoutId: number): void {
+  onDeleteWorkout(workoutId: string): void {
     this.deleteWorkout.emit(workoutId);
   }
 

@@ -47,6 +47,12 @@
       padding-right: 0;
     }
   }
+
+  &__btns-control {
+    &:first-child button {
+      margin-right: 15px;
+    }
+  }
 }
 
 .mat-mdc-form-field {

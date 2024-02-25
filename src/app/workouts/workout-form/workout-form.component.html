@@ -87,7 +87,7 @@
         color="primary"
         (click)="onUpdateWorkout()"
       >
-        Save Workout
+        {{ exist ? "Update" : "Create" }} Workout
       </button>
       <a routerLink="/workouts" mat-button>Cancel</a>
     </div>

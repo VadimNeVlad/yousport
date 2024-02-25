@@ -12,12 +12,10 @@
     </mat-card-header>
 
     <mat-card-content>
-      <div class="schedule__list" *ngIf="scheduleList$ | async as scheduleList">
+      <div class="schedule__list" *ngIf="schedule$ | async as schedule">
         <app-schedule-item
-          *ngFor="let schedule of scheduleList"
-          [schedule]="schedule"
-          [meals]="(meals$ | async)!"
-          [workouts]="(workouts$ | async)!"
+          *ngFor="let assignemt of schedule.assignments"
+          [assignment]="assignemt"
           (update)="updateSchedule($event)"
         ></app-schedule-item>
       </div>
