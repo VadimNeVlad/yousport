@@ -17,7 +17,7 @@ export class MealsItemComponent {
   toggled = false;
 
   @Input() meal!: Meal;
-  @Output() deleteMeal = new EventEmitter<number>();
+  @Output() deleteMeal = new EventEmitter<string>();
 
   constructor() {}
 
@@ -25,7 +25,7 @@ export class MealsItemComponent {
     this.toggled = !this.toggled;
   }
 
-  onDeleteMeal(mealId: number): void {
+  onDeleteMeal(mealId: string): void {
     this.deleteMeal.emit(mealId);
   }
 }

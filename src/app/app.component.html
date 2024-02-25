@@ -1,8 +1,4 @@
 <main>
-  <app-header
-    [isLoggedIn]="(isLoggedIn$ | async) || false"
-    [user]="user$ | async"
-    (logout)="logout()"
-  ></app-header>
+  <app-header [user]="user$ | async" (logout)="logout()"></app-header>
   <router-outlet></router-outlet>
 </main>

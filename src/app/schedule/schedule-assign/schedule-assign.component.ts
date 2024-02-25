@@ -32,8 +32,8 @@ export class ScheduleAssignComponent {
     return `../${name.toLowerCase()}/new`;
   }
 
-  trackMealsById(idx: number, meal: Meal): number {
-    return meal.id!;
+  trackMealsById(idx: number, meal: Meal): string {
+    return meal.id;
   }
 
   trackWorkoutsById(idx: number, workout: Workout): string {

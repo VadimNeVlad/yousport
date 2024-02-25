@@ -30,8 +30,7 @@ export class AuthInterceptor implements HttpInterceptor {
     const user = localStorage.getItem('user');
 
     if (user) {
-      this.authService.user$.next(JSON.parse(localStorage.getItem('user')!));
-      this.authService.isLoggedIn$.next(true);
+      this.authService.isLoggedIn();
     }
 
     return next

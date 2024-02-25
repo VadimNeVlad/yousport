@@ -1,7 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { AuthData, AuthResponse } from '../models/auth';
-import { Observable, catchError, map, throwError, BehaviorSubject } from 'rxjs';
+import {
+  Observable,
+  catchError,
+  map,
+  throwError,
+  BehaviorSubject,
+  tap,
+} from 'rxjs';
 import { environment } from 'src/environment/environment';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
@@ -26,11 +33,10 @@ export class AuthService {
     return this.http
       .post<AuthResponse>(`${this._baseUrl}/auth/register`, registerData)
       .pipe(
-        map((authData: AuthResponse) => {
+        tap((authData: AuthResponse) => {
           this.toastr.success('Registration completed successfully');
           this.setCredentials(authData);
           this.router.navigateByUrl('/schedule');
-          return authData;
         }),
 
         catchError((e: HttpErrorResponse) => {
@@ -44,10 +50,9 @@ export class AuthService {
     return this.http
       .post<AuthResponse>(`${this._baseUrl}/auth/login`, loginData)
       .pipe(
-        map((authData: AuthResponse) => {
+        tap((authData: AuthResponse) => {
           this.setCredentials(authData);
           this.router.navigateByUrl('/schedule');
-          return authData;
         }),
 
         catchError((e: HttpErrorResponse) => {

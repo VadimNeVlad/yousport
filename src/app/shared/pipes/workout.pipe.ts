@@ -9,7 +9,7 @@ export class WorkoutPipe implements PipeTransform {
     if (value.type === 'endurance') {
       return `Distance: ${value.endurance.distance} km, Duration: ${value.endurance.duration} mins`;
     } else {
-      return `Weight: ${value.strength.weight} km, Reps: ${value.strength.reps} mins, Sets: ${value.strength.sets}`;
+      return `Reps: ${value.strength.reps}, Sets: ${value.strength.sets}, Weight: ${value.strength.weight} kg`;
     }
   }
 }

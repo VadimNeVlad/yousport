@@ -3,11 +3,7 @@
     <mat-card-header>
       <div class="meals-list__header">
         <div class="meals-list__title">
-          <mat-icon
-            aria-hidden="false"
-            fontIcon="favorite"
-            class="white-icon"
-          ></mat-icon>
+          <mat-icon fontIcon="food_bank" class="white-icon"></mat-icon>
           <h2>Your Meals</h2>
         </div>
 
@@ -33,7 +29,9 @@
       </div>
 
       <ng-template #loading>
-        <p class="loader">Loading Meals...</p>
+        <div class="meals-list__loader">
+          <mat-spinner diameter="50"></mat-spinner>
+        </div>
       </ng-template>
     </mat-card-content>
   </mat-card>

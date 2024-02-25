@@ -53,6 +53,12 @@
       padding-right: 15px;
     }
   }
+
+  &__btns-control {
+    &:first-child button {
+      margin-right: 10px;
+    }
+  }
 }
 
 .mat-mdc-form-field {

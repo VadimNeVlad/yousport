@@ -8,5 +8,5 @@ export interface Workout {
   userId: string;
   strength: Strength;
   endurance: Endurance;
-  assignmentId: string;
+  assignmentId?: string;
 }

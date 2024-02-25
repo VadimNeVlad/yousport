@@ -14,9 +14,7 @@ import { User } from '../../models/user';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-  @Input() isLoggedIn = false;
   @Input() user: User | null = null;
-
   @Output() logout = new EventEmitter<void>();
 
   constructor() {}

@@ -34,7 +34,7 @@ export class MealFormComponent implements OnChanges {
   @Input() meal!: Meal;
   @Output() submitMeal = new EventEmitter<Meal>();
   @Output() updateMeal = new EventEmitter<Meal>();
-  @Output() deleteMeal = new EventEmitter<number>();
+  @Output() deleteMeal = new EventEmitter<string>();
 
   constructor(private fb: FormBuilder) {}
 
@@ -63,7 +63,7 @@ export class MealFormComponent implements OnChanges {
   }
 
   removeIngredient(idx: number): void {
-    this.ingredients.removeAt(idx);
+    if (this.ingredients.controls.length > 1) this.ingredients.removeAt(idx);
   }
 
   emptyIngredients(): void {
@@ -73,22 +73,20 @@ export class MealFormComponent implements OnChanges {
   }
 
   onUpdate(): void {
-    if (this.form.valid) {
-      const mealid = this.meal.id;
-      const updatedMeal: Meal = {
-        ...this.form.value,
-        id: mealid,
-      };
+    const mealid = this.meal.id;
+    const updatedMeal: Meal = {
+      ...this.form.value,
+      id: mealid,
+    };
 
-      this.updateMeal.emit(updatedMeal);
-    }
+    if (this.form.valid) this.updateMeal.emit(updatedMeal);
   }
 
   toggle(): void {
     this.toggled = !this.toggled;
   }
 
-  onDeleteMeal(mealId: number): void {
+  onDeleteMeal(mealId: string): void {
     this.deleteMeal.emit(mealId);
   }
 

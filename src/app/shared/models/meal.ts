@@ -1,7 +1,7 @@
 export interface Meal {
-  id?: number;
-  uid?: number;
+  id: string;
   name: string;
+  userId: string;
   ingredients: string[];
-  timestamp?: number;
+  assignmentId?: string;
 }

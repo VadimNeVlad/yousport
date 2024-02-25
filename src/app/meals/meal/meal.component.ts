@@ -26,7 +26,7 @@ export class MealComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.mealId = this.route.snapshot.paramMap.get('id') || '';
+    this.mealId = this.route.snapshot.paramMap.get('id') as string;
 
     if (this.mealId) this.getMeal();
   }
@@ -49,7 +49,7 @@ export class MealComponent implements OnInit, OnDestroy {
       .subscribe();
   }
 
-  deleteMeal(mealId: number): void {
+  deleteMeal(mealId: string): void {
     this.mealService
       .deleteMeal(mealId)
       .pipe(takeUntil(this.unsubscribe$))

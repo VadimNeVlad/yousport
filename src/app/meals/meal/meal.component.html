@@ -13,17 +13,23 @@
     </mat-card-header>
 
     <mat-card-content>
-      <app-meal-form
-        *ngIf="meal$ | async as meal"
-        [meal]="meal"
-        (updateMeal)="updateMeal($event)"
-        (deleteMeal)="deleteMeal($event)"
-      ></app-meal-form>
+      <ng-container *ngIf="meal$ | async as meal; else loading">
+        <app-meal-form
+          [meal]="meal"
+          (updateMeal)="updateMeal($event)"
+          (deleteMeal)="deleteMeal($event)"
+        ></app-meal-form>
+      </ng-container>
 
-      <app-meal-form
-        *ngIf="!(meal$ | async)"
-        (submitMeal)="addMeal($event)"
-      ></app-meal-form>
+      <ng-template #loading>
+        <div *ngIf="mealId; else addMealForm" class="meal__loader">
+          <mat-spinner diameter="50"></mat-spinner>
+        </div>
+      </ng-template>
+
+      <ng-template #addMealForm>
+        <app-meal-form (submitMeal)="addMeal($event)"></app-meal-form>
+      </ng-template>
     </mat-card-content>
   </mat-card>
 </div>

@@ -23,15 +23,15 @@ export class MealsListComponent implements OnInit, OnDestroy {
     this.unsubscribe$.complete();
   }
 
-  trackById(idx: number, meal: Meal): number {
-    return meal.id!;
+  trackById(idx: number, meal: Meal): string {
+    return meal.id;
   }
 
   getMeals(): void {
     this.meals$ = this.mealsServise.getMeals();
   }
 
-  deleteMeal(mealId: number): void {
+  deleteMeal(mealId: string): void {
     this.mealsServise
       .deleteMeal(mealId)
       .pipe(takeUntil(this.unsubscribe$))

@@ -1,5 +1,5 @@
 <div class="meals-item">
-  <a class="meals-item__title" [routerLink]="meal.id?.toString()">
+  <a class="meals-item__title" [routerLink]="meal.id">
     <h4>{{ meal.name }}</h4>
     <span>{{ meal.ingredients | join }}</span>
   </a>
@@ -19,7 +19,7 @@
       class="delete-btn favorite-icon"
       (click)="toggle()"
     >
-      <mat-icon class="white-icon">delete</mat-icon>
+      <mat-icon color="warn">delete</mat-icon>
     </button>
   </div>
 </div>

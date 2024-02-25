@@ -49,7 +49,7 @@
         class="delete-btn favorite-icon"
         (click)="removeIngredient(i)"
       >
-        <mat-icon class="white-icon">delete</mat-icon>
+        <mat-icon color="warn">delete</mat-icon>
       </button>
     </div>
 
@@ -81,7 +81,7 @@
         color="primary"
         (click)="onUpdate()"
       >
-        Save Meal
+        {{ exist ? "Update" : "Create" }} Meal
       </button>
       <a routerLink="/meals" mat-button>Cancel</a>
     </div>
@@ -93,7 +93,7 @@
           <button
             mat-raised-button
             color="warn"
-            (click)="onDeleteMeal(meal.id!)"
+            (click)="onDeleteMeal(meal.id)"
           >
             Yes
           </button>
