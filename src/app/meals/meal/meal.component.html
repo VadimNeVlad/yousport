@@ -1,7 +1,13 @@
-<div class="meal">
+<div class="meal container">
   <mat-card>
     <mat-card-header>
-      <div class="meal__title">
+      <div
+        class="meal__title"
+        fxLayout="row"
+        fxLayoutAlign.lt-sm="center center"
+        fxLayoutAlign="start center"
+        fxFlex="100"
+      >
         <mat-icon
           aria-hidden="false"
           aria-label="Example home icon"
@@ -22,7 +28,12 @@
       </ng-container>
 
       <ng-template #loading>
-        <div *ngIf="mealId; else addMealForm" class="meal__loader">
+        <div
+          *ngIf="mealId; else addMealForm"
+          class="meal__loader"
+          fxLayout="row"
+          fxLayoutAlign="center center"
+        >
           <mat-spinner diameter="50"></mat-spinner>
         </div>
       </ng-template>

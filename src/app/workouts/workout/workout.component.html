@@ -1,7 +1,13 @@
-<div class="workout">
+<div class="workout container">
   <mat-card>
     <mat-card-header>
-      <div class="workout__title">
+      <div
+        class="workout__title"
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        fxLayoutAlign.lt-sm="center center"
+        fxFlex="100"
+      >
         <mat-icon
           [fontIcon]="workoutId ? 'edit' : 'add'"
           class="white-icon"
@@ -20,7 +26,12 @@
       </ng-container>
 
       <ng-template #loading>
-        <div *ngIf="workoutId; else addWorkoutForm" class="workout__loader">
+        <div
+          *ngIf="workoutId; else addWorkoutForm"
+          class="workout__loader"
+          fxLayout="row"
+          fxLayoutAlign="center center"
+        >
           <mat-spinner diameter="50"></mat-spinner>
         </div>
       </ng-template>

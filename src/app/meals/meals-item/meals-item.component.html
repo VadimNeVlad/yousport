@@ -1,10 +1,16 @@
-<div class="meals-item">
+<div class="meals-item" fxLayout="row" fxLayoutAlign="space-between center">
   <a class="meals-item__title" [routerLink]="meal.id">
     <h4>{{ meal.name }}</h4>
     <span>{{ meal.ingredients | join }}</span>
   </a>
-  <div class="meals-item__controls">
-    <div *ngIf="toggled" class="meals-item__delete-content">
+  <div class="meals-item__controls" fxLayout="row" fxLayoutAlign="end center">
+    <div
+      *ngIf="toggled"
+      class="meals-item__delete-content"
+      fxLayout="row"
+      fxLayoutAlign="end center"
+      fxHide.lt-md
+    >
       <p>Delete item?</p>
       <div class="meals-item__delete-btns">
         <button mat-raised-button color="warn" (click)="onDeleteMeal(meal.id!)">
@@ -21,5 +27,21 @@
     >
       <mat-icon color="warn">delete</mat-icon>
     </button>
+  </div>
+</div>
+
+<div
+  *ngIf="toggled"
+  class="meals-item__delete-content meals-item__delete-content--mobile"
+  fxLayout="row"
+  fxLayoutAlign="end center"
+  fxHide.gt-sm
+>
+  <p>Delete item?</p>
+  <div class="meals-item__delete-btns">
+    <button mat-raised-button color="warn" (click)="onDeleteMeal(meal.id!)">
+      Yes
+    </button>
+    <button mat-button (click)="toggle()">No</button>
   </div>
 </div>

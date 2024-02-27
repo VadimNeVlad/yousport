@@ -18,7 +18,11 @@
     </mat-error>
   </div>
 
-  <div class="meal-form__ingredients-row">
+  <div
+    class="meal-form__ingredients-row"
+    fxLayout="row"
+    fxLayoutAlign="space-between end"
+  >
     <h4>Food</h4>
     <button
       mat-raised-button
@@ -34,7 +38,11 @@
     *ngFor="let ingredient of ingredients.controls; index as i"
     class="meal-form__ingredient-field"
   >
-    <div class="meal-form__ingredient__field-row">
+    <div
+      class="meal-form__ingredient__field-row"
+      fxLayout="row"
+      fxLayoutAlign="space-between start"
+    >
       <mat-form-field class="example-form-field">
         <input
           [formControlName]="i"
@@ -61,8 +69,17 @@
     </mat-error>
   </div>
 
-  <div class="meal-form__btns">
-    <div class="meal-form__btns-control">
+  <div
+    class="meal-form__btns"
+    fxLayout="row"
+    fxLayoutAlign="space-between center"
+  >
+    <div
+      class="meal-form__btns-control"
+      fxLayout="row"
+      fxLayoutAlign.lt-sm="space-between center"
+      fxFlex.lt-sm="100"
+    >
       <button
         *ngIf="!exist"
         [disabled]="this.form.invalid"
@@ -86,8 +103,18 @@
       <a routerLink="/meals" mat-button>Cancel</a>
     </div>
 
-    <div *ngIf="exist" class="meal-form__btns-delete">
-      <div *ngIf="toggled" class="meal-form__delete-content">
+    <div
+      *ngIf="exist"
+      class="meal-form__btns-delete"
+      fxLayout="row"
+      fxLayoutAlign="start center"
+    >
+      <div
+        *ngIf="toggled"
+        class="meal-form__delete-content"
+        fxLayout="row"
+        fxLayoutAlign="start center"
+      >
         <p>Delete Meal?</p>
         <div class="meals-form__delete-btns">
           <button
@@ -102,6 +129,7 @@
       </div>
       <button
         mat-raised-button
+        fxHide.lt-sm
         color="warn"
         type="button"
         class="delete-btn favorite-icon"

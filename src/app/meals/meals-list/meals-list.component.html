@@ -1,8 +1,16 @@
-<div class="meals-list">
+<div class="meals-list container">
   <mat-card>
     <mat-card-header>
-      <div class="meals-list__header">
-        <div class="meals-list__title">
+      <div
+        class="meals-list__header"
+        fxLayout.lt-sm="column"
+        fxLayoutAlign="space-between center"
+      >
+        <div
+          class="meals-list__title"
+          fxLayout="row"
+          fxLayoutAlign="start center"
+        >
           <mat-icon fontIcon="food_bank" class="white-icon"></mat-icon>
           <h2>Your Meals</h2>
         </div>
@@ -29,7 +37,11 @@
       </div>
 
       <ng-template #loading>
-        <div class="meals-list__loader">
+        <div
+          class="meals-list__loader"
+          fxLayout="row"
+          fxLayoutAlign="center center"
+        >
           <mat-spinner diameter="50"></mat-spinner>
         </div>
       </ng-template>

@@ -12,6 +12,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { RouterModule } from '@angular/router';
 import { JoinPipe } from './pipes/join.pipe';
 import { WorkoutPipe } from './pipes/workout.pipe';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [HeaderComponent, JoinPipe, WorkoutPipe],
@@ -21,6 +22,7 @@ import { WorkoutPipe } from './pipes/workout.pipe';
     MatButtonModule,
     MatIconModule,
     RouterModule,
+    FlexLayoutModule,
   ],
   exports: [
     MatToolbarModule,
@@ -34,6 +36,7 @@ import { WorkoutPipe } from './pipes/workout.pipe';
     MatExpansionModule,
     JoinPipe,
     WorkoutPipe,
+    FlexLayoutModule,
   ],
 })
 export class SharedModule {}

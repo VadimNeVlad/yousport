@@ -1,9 +1,13 @@
 <mat-toolbar class="header" color="primary">
   <mat-toolbar-row>
-    <div class="header__row">
-      <div class="header__left-col">
+    <div
+      class="header__row"
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+    >
+      <div class="header__left-col" fxLayout="row">
         <a routerLink="/schedule" class="header__logo">YouSport</a>
-        <nav *ngIf="user" class="header__nav">
+        <nav *ngIf="user" class="header__nav" fxHide.lt-md>
           <a mat-button routerLink="/schedule" routerLinkActive="active"
             >Schedule</a
           >
@@ -14,12 +18,39 @@
         </nav>
       </div>
 
-      <div class="header__info-panel">
+      <div
+        class="header__info-panel"
+        fxLayout="row"
+        fxLayoutAlign="end center"
+        fxLayoutGap="10"
+        fxLayoutGap.xs="0"
+      >
         <p *ngIf="user">{{ user.email }}</p>
         <button *ngIf="user" mat-icon-button (click)="onLogout()">
           <mat-icon>logout</mat-icon>
         </button>
       </div>
     </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-toolbar class="header" color="primary" fxHide.gt-sm>
+  <mat-toolbar-row>
+    <nav
+      *ngIf="user"
+      fxFlex="100"
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+    >
+      <a mat-button fxFlex="33" routerLink="/schedule" routerLinkActive="active"
+        >Schedule</a
+      >
+      <a mat-button fxFlex="33" routerLink="/meals" routerLinkActive="active"
+        >Meals</a
+      >
+      <a mat-button fxFlex="33" routerLink="/workouts" routerLinkActive="active"
+        >Workouts</a
+      >
+    </nav>
   </mat-toolbar-row>
 </mat-toolbar>

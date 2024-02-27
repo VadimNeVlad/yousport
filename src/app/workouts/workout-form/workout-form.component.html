@@ -23,23 +23,25 @@
   <div
     *ngIf="form.get('type')?.value === 'strength'"
     class="workout-form__type-fields"
+    fxLayout="row wrap"
+    fxLayoutAlign="space-between start"
     formGroupName="strength"
   >
-    <div class="workout-form__type-field">
+    <div class="workout-form__type-field" fxFlex.gt-sm="33">
       <h4>Reps</h4>
       <mat-form-field class="example-form-field">
         <input matInput type="number" formControlName="reps" />
       </mat-form-field>
     </div>
 
-    <div class="workout-form__type-field">
+    <div class="workout-form__type-field" fxFlex.gt-sm="33">
       <h4>Sets</h4>
       <mat-form-field class="example-form-field">
         <input matInput type="number" formControlName="sets" />
       </mat-form-field>
     </div>
 
-    <div class="workout-form__type-field">
+    <div class="workout-form__type-field" fxFlex.gt-sm="33">
       <h4>Weight <span>(kg)</span></h4>
       <mat-form-field class="example-form-field">
         <input matInput type="number" formControlName="weight" />
@@ -50,16 +52,18 @@
   <div
     *ngIf="form.get('type')?.value === 'endurance'"
     class="workout-form__type-fields"
+    fxLayout="row wrap"
+    fxLayoutAlign="space-between start"
     formGroupName="endurance"
   >
-    <div class="workout-form__type-field">
+    <div class="workout-form__type-field" fxFlex.gt-sm="50">
       <h4>Distance <span>(km)</span></h4>
       <mat-form-field class="example-form-field">
         <input matInput type="number" formControlName="distance" />
       </mat-form-field>
     </div>
 
-    <div class="workout-form__type-field">
+    <div class="workout-form__type-field" fxFlex.gt-sm="50">
       <h4>Duration <span>(minutes)</span></h4>
       <mat-form-field class="example-form-field">
         <input matInput type="number" formControlName="duration" />
@@ -67,8 +71,16 @@
     </div>
   </div>
 
-  <div class="workout-form__btns">
-    <div class="workout-form__btns-control">
+  <div
+    class="workout-form__btns"
+    fxLayout="row"
+    fxLayoutAlign="space-between center"
+  >
+    <div
+      class="workout-form__btns-control"
+      fxLayoutAlign.lt-sm="space-between center"
+      fxFlex.lt-sm="100"
+    >
       <button
         *ngIf="!exist"
         [disabled]="this.form.invalid"
@@ -93,7 +105,12 @@
     </div>
 
     <div *ngIf="exist" class="workout-form__btns-delete">
-      <div *ngIf="toggled" class="workout-form__delete-content">
+      <div
+        *ngIf="toggled"
+        class="workout-form__delete-content"
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+      >
         <p>Delete Workout?</p>
         <div class="meals-form__delete-btns">
           <button
@@ -108,6 +125,7 @@
       </div>
       <button
         mat-raised-button
+        fxHide.lt-sm
         color="warn"
         type="button"
         class="delete-btn favorite-icon"

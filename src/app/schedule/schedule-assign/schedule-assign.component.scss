@@ -1,3 +1,5 @@
+@import "/src/app/shared/styles/mixins";
+
 .schedule-assign {
   position: absolute;
   top: 0;
@@ -14,16 +16,17 @@
     left: 50%;
     transform: translate(-50%, -50%);
     max-width: 400px;
-    width: 100%;
+    width: 92%;
+    @include breakpoint(sm) {
+      width: 100%;
+    }
+
     padding: 15px;
     background-color: #424242;
     border-radius: 4px;
   }
 
   &__title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding-bottom: 50px;
 
     h2 {

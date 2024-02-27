@@ -1,9 +1,10 @@
 .header {
+  &:last-child {
+    box-shadow: 0 3px 5px -1px #0003, 0 6px 10px #00000024, 0 1px 18px #0000001f;
+  }
+
   &__row {
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
   }
 
   &__logo {
@@ -14,18 +15,10 @@
     padding-left: 50px;
   }
 
-  &__left-col {
-    display: flex;
-  }
-
   &__info-panel {
-    display: flex;
-    align-items: center;
-
     p {
       font-size: 14px;
       margin: 0;
-      padding-right: 15px;
     }
   }
 }

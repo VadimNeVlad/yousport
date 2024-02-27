@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "ngx-toastr/toastr";
+@import "/src/app/shared/styles/mixins";
 
 html,
 body {
@@ -22,4 +23,56 @@ a {
 
 .white-icon {
   color: #ffffff;
+}
+
+.container {
+  padding: 16px;
+  @include breakpoint(md) {
+    padding: 70px 16px;
+  }
+
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.mat-typography h2 {
+  font-size: 22px;
+  margin: 0;
+  color: #fff;
+  @include breakpoint(md) {
+    font-size: 26px;
+  }
+}
+
+.mat-typography h3 {
+  font-size: 18px;
+  @include breakpoint(md) {
+    font-size: 20px;
+  }
+
+  font-weight: 500;
+  margin: 0;
+}
+
+mat-expansion-panel-header.tab-header {
+  padding: 0 15px;
+  @include breakpoint(md) {
+    padding: 0 24px;
+  }
+}
+
+.tab .mat-expansion-panel-body {
+  padding: 0 15px 16px;
+  @include breakpoint(md) {
+    padding: 0 24px 16px;
+  }
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
 }

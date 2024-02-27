@@ -21,13 +21,13 @@ export class WorkoutFormComponent implements OnChanges {
     name: ['', Validators.required],
     type: 'strength',
     strength: this.fb.group({
-      reps: 0,
-      sets: 0,
-      weight: 0,
+      reps: null,
+      sets: null,
+      weight: null,
     }),
     endurance: this.fb.group({
-      distance: 0,
-      duration: 0,
+      distance: null,
+      duration: null,
     }),
   });
 

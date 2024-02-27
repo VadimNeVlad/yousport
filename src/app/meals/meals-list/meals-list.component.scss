@@ -1,29 +1,15 @@
 .meals-list {
-  padding-top: 100px;
-  max-width: 800px;
-  width: 100%;
-  margin: 0 auto;
-
   &__content {
-    padding-top: 35px;
-  }
-
-  &__title {
-    display: flex;
-    align-items: center;
+    padding-top: 25px;
   }
 
   &__header {
-    display: flex;
     width: 100%;
-    justify-content: space-between;
-    align-items: center;
 
     h2 {
-      font-size: 26px;
       margin: 0;
-      padding-left: 10px;
       color: #fff;
+      padding-left: 10px;
     }
   }
 
@@ -34,9 +20,6 @@
   }
 
   &__loader {
-    display: flex;
     min-height: 250px;
-    justify-content: center;
-    align-items: center;
   }
 }

@@ -1,7 +1,13 @@
-<div class="schedule">
+<div class="schedule container">
   <mat-card>
     <mat-card-header>
-      <div class="schedule__title">
+      <div
+        class="schedule__title"
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        fxLayoutAlign.lt-sm="center center"
+        fxFlex="100"
+      >
         <mat-icon
           aria-hidden="false"
           fontIcon="schedule"
@@ -20,7 +26,9 @@
           workouts: workouts$ | async
         } as data"
       >
-        <ng-container *ngIf="data.schedule && data.meals && data.workouts">
+        <ng-container
+          *ngIf="data.schedule && data.meals && data.workouts; else loading"
+        >
           <mat-accordion multi>
             <app-schedule-item
               *ngFor="let assignemt of data.schedule.assignments"
@@ -32,6 +40,16 @@
           </mat-accordion>
         </ng-container>
       </div>
+
+      <ng-template #loading>
+        <div
+          class="schedule__loader"
+          fxLayout="row"
+          fxLayoutAlign="center center"
+        >
+          <mat-spinner diameter="50"></mat-spinner>
+        </div>
+      </ng-template>
     </mat-card-content>
   </mat-card>
 </div>

@@ -1,7 +1,7 @@
-<mat-expansion-panel [expanded]="getCurrentDay()">
-  <mat-expansion-panel-header>
+<mat-expansion-panel class="tab" [expanded]="getCurrentDay()">
+  <mat-expansion-panel-header class="tab-header">
     <mat-panel-title>
-      <h2>{{ assignment.day }}</h2>
+      <h3>{{ assignment.day }}</h3>
     </mat-panel-title>
   </mat-expansion-panel-header>
   <div class="schedule-item">
@@ -12,6 +12,8 @@
       >
         <div
           class="schedule-item__title"
+          fxLayout="row"
+          fxLayoutAlign="start center"
           (click)="
             toggleModal({
               type: 'Meals',
@@ -67,6 +69,8 @@
       >
         <div
           class="schedule-item__title"
+          fxLayout="row"
+          fxLayoutAlign="start center"
           (click)="
             toggleModal({
               type: 'Workouts',

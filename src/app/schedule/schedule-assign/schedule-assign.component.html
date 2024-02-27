@@ -1,6 +1,11 @@
 <div class="schedule-assign">
   <div class="schedule-assign__modal">
-    <div class="schedule-assign__title">
+    <div
+      class="schedule-assign__title"
+      fxLayout.lt-sm="column"
+      fxLayoutGap.gt-sm="5px"
+      fxLayoutAlign="space-between center"
+    >
       <h2>Assign {{ selected }}</h2>
       <button
         [routerLink]="getRoute(selected)"

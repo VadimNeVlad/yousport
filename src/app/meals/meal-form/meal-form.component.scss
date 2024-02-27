@@ -1,3 +1,5 @@
+@import "/src/app/shared/styles/mixins";
+
 .meal-form {
   h4 {
     font-size: 18px;
@@ -7,15 +9,15 @@
   }
 
   &__name-row {
-    padding-top: 40px;
-    padding-bottom: 30px;
+    padding-top: 25px;
+    padding-bottom: 20px;
+    @include breakpoint(md) {
+      padding-bottom: 30px;
+    }
   }
 
   &__ingredients-row {
     width: 100%;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
     padding-bottom: 15px;
 
     h4 {
@@ -24,28 +26,12 @@
   }
 
   &__ingredient__field-row {
-    display: flex;
-    justify-content: space-between;
-
     .mat-mdc-form-field {
       width: 92%;
     }
   }
 
-  &__btns {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  &__btns-delete {
-    display: flex;
-    align-items: center;
-  }
-
   &__delete-content {
-    display: flex;
-    align-items: center;
     padding-right: 15px;
 
     p {

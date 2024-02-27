@@ -1,3 +1,5 @@
+@import "/src/app/shared/styles/mixins";
+
 .workout-form {
   h4 {
     font-size: 18px;
@@ -8,13 +10,11 @@
 
   &__name-row {
     padding-top: 40px;
-    padding-bottom: 30px;
-  }
+    padding-bottom: 10px;
 
-  &__btns {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include breakpoint(md) {
+      padding-bottom: 30px;
+    }
   }
 
   &__btns-delete {
@@ -23,8 +23,6 @@
   }
 
   &__delete-content {
-    display: flex;
-    align-items: center;
     padding-right: 15px;
 
     p {
@@ -34,14 +32,11 @@
     }
   }
 
-  &__type-fields {
-    display: flex;
-    justify-content: space-between;
-  }
-
   &__type-field {
     width: 100%;
-    padding-right: 15px;
+    @include breakpoint(md) {
+      padding-right: 15px;
+    }
 
     &:last-child {
       padding-right: 0;

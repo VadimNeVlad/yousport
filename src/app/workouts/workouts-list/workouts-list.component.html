@@ -1,8 +1,16 @@
-<div class="workouts-list">
+<div class="workouts-list container">
   <mat-card>
     <mat-card-header>
-      <div class="workouts-list__header">
-        <div class="workouts-list__title">
+      <div
+        class="workouts-list__header"
+        fxLayout.lt-sm="column"
+        fxLayoutAlign="space-between center"
+      >
+        <div
+          class="workouts-list__title"
+          fxLayout="row"
+          fxLayoutAlign="start center"
+        >
           <mat-icon
             aria-hidden="false"
             fontIcon="fitness_center"
@@ -33,7 +41,11 @@
       </div>
 
       <ng-template #loading>
-        <div class="workouts-list__loader">
+        <div
+          class="workouts-list__loader"
+          fxLayout="row"
+          fxLayoutAlign="center center"
+        >
           <mat-spinner diameter="50"></mat-spinner>
         </div>
       </ng-template>

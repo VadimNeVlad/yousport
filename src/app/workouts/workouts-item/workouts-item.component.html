@@ -1,16 +1,26 @@
-<div class="workouts-item">
+<div class="workouts-item" fxLayout="row" fxLayoutAlign="space-between center">
   <a class="workouts-item__title" [routerLink]="workout.id">
     <h4>{{ workout.name }}</h4>
     <span>{{ workout | workout }}</span>
   </a>
-  <div class="workouts-item__controls">
-    <div *ngIf="toggled" class="workouts-item__delete-content">
+  <div
+    class="workouts-item__controls"
+    fxLayout="row"
+    fxLayoutAlign="start center"
+  >
+    <div
+      *ngIf="toggled"
+      class="workouts-item__delete-content"
+      fxLayout="row"
+      fxLayoutAlign="end center"
+      fxHide.lt-md
+    >
       <p>Delete item?</p>
       <div class="workouts-item__delete-btns">
         <button
           mat-raised-button
           color="warn"
-          (click)="onDeleteWorkout(workout.id!)"
+          (click)="onDeleteWorkout(workout.id)"
         >
           Yes
         </button>
@@ -25,5 +35,25 @@
     >
       <mat-icon color="warn">delete</mat-icon>
     </button>
+  </div>
+</div>
+
+<div
+  *ngIf="toggled"
+  class="workouts-item__delete-content workouts-item__delete-content--mobile"
+  fxLayout="row"
+  fxLayoutAlign="end center"
+  fxHide.gt-sm
+>
+  <p>Delete item?</p>
+  <div class="workouts-item__delete-btns">
+    <button
+      mat-raised-button
+      color="warn"
+      (click)="onDeleteWorkout(workout.id)"
+    >
+      Yes
+    </button>
+    <button mat-button (click)="toggle()">No</button>
   </div>
 </div>

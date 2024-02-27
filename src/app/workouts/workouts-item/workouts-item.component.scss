@@ -1,10 +1,9 @@
 .workouts-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding-bottom: 20px;
 
   &__title {
+    padding-right: 10px;
+
     h4 {
       color: #fff;
       margin: 0;
@@ -15,19 +14,15 @@
     }
   }
 
-  &__controls {
-    display: flex;
-    align-items: center;
-  }
-
   &__delete-content {
-    display: flex;
-    align-items: center;
-
     p {
       margin: 0;
       color: #fff;
     }
+  }
+
+  &__delete-content--mobile {
+    padding-bottom: 20px;
   }
 
   &__delete-btns {
