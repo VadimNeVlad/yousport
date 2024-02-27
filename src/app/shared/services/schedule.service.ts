@@ -1,10 +1,10 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { BehaviorSubject, Observable, catchError, map, throwError } from 'rxjs';
+import { Observable, catchError, map, tap, throwError } from 'rxjs';
 import { environment } from 'src/environment/environment';
-import { Schedule, ScheduleItem } from '../models/schedule';
-import { AuthService } from './auth.service';
+import { Schedule } from '../models/schedule';
+import { Assignment } from '../models/assignment';
 
 @Injectable({
   providedIn: 'root',
@@ -23,20 +23,12 @@ export class ScheduleService {
     );
   }
 
-  updateSchedule(scheduleItem: any): Observable<ScheduleItem> {
-    const updatedSchedule: Schedule = {
-      ...scheduleItem,
-    };
-
+  updateSchedule(scheduleItem: any): Observable<Partial<Assignment>> {
     return this.http
-      .patch<ScheduleItem>(
-        `${this._baseUrl}/schedules/${updatedSchedule.id}`,
-        updatedSchedule
-      )
+      .put<Partial<Assignment>>(`${this._baseUrl}/schedule`, scheduleItem)
       .pipe(
-        map((meal: ScheduleItem) => {
+        tap(() => {
           this.toastr.success('Schedule changed successfully');
-          return meal;
         }),
 
         catchError((e: HttpErrorResponse) => {

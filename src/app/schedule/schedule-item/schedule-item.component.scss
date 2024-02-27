@@ -1,10 +1,4 @@
 .schedule-item {
-  h2 {
-    color: #fff;
-    margin: 0;
-    padding-bottom: 10px;
-  }
-
   &__control-item {
     padding-bottom: 10px;
   }
@@ -27,11 +21,15 @@
     }
   }
 
+  &__control-item-btn {
+    margin-bottom: 25px;
+  }
+
   &__list-item {
-    display: flex;
+    display: inline-flex;
     align-items: center;
+    gap: 10px;
     color: #fff;
-    cursor: pointer;
     padding-bottom: 10px;
     transition: all 0.3s;
 
@@ -41,7 +39,20 @@
 
     p {
       margin: 0;
-      padding-left: 7px;
+    }
+
+    span {
+      color: #c4c4c4;
     }
   }
+
+  p {
+    color: #fff;
+  }
+}
+
+h2 {
+  color: #fff;
+  margin: 0;
+  padding: 10px 0;
 }

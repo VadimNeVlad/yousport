@@ -3,16 +3,11 @@ import {
   Component,
   EventEmitter,
   Input,
-  OnInit,
   Output,
 } from '@angular/core';
 import { Assignment } from 'src/app/shared/models/assignment';
 import { Meal } from 'src/app/shared/models/meal';
-import {
-  AssignmentData,
-  Schedule,
-  ScheduleItem,
-} from 'src/app/shared/models/schedule';
+import { AssignmentData } from 'src/app/shared/models/schedule';
 import { Workout } from 'src/app/shared/models/workout';
 
 @Component({
@@ -26,11 +21,12 @@ export class ScheduleItemComponent {
   selectedType = '';
   day = '';
   key = 0;
-  sortedAssignments: any[] = [];
 
   @Input() assignment!: Assignment;
+  @Input() workouts: Workout[] = [];
+  @Input() meals: Meal[] = [];
 
-  @Output() update = new EventEmitter<ScheduleItem>();
+  @Output() update = new EventEmitter<Partial<Assignment>>();
 
   constructor() {}
 
@@ -42,30 +38,20 @@ export class ScheduleItemComponent {
     this.open = !this.open;
   }
 
-  onUpdateSchedule(scheduleData: ScheduleItem): void {
-    // const updatedSchedule: ScheduleItem | any = {
-    //   assignments: [
-    //     {
-    //       meals: this.sortedAssignments[this.key].meals,
-    //       workouts: this.sortedAssignments[this.key].workouts,
-    //       day: this.day,
-    //       key: this.key,
-    //       ...scheduleData,
-    //     },
-    //     ...this.assignments.filter(
-    //       (schedule) => schedule.day !== this.day
-    //     ),
-    //   ],
-    //   id: this.schedule.id,
-    // };
-    // this.update.emit(updatedSchedule);
+  onUpdateSchedule(data: Partial<Assignment>): void {
+    const scheduleData = {
+      ...data,
+      id: this.assignment.id,
+    };
+
+    this.update.emit(scheduleData);
   }
 
-  trackMealByName(idx: number, meal: Meal): string {
-    return meal.name;
+  trackById(idx: number, item: Workout | Meal): string {
+    return item.id;
   }
 
-  trackWorkoutByName(idx: number, workout: Workout): string {
-    return workout.name;
+  getCurrentDay(): boolean {
+    return new Date().getDay() === this.assignment.key;
   }
 }

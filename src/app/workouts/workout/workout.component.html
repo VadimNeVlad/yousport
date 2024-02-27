@@ -2,7 +2,10 @@
   <mat-card>
     <mat-card-header>
       <div class="workout__title">
-        <mat-icon fontIcon="add" class="white-icon"></mat-icon>
+        <mat-icon
+          [fontIcon]="workoutId ? 'edit' : 'add'"
+          class="white-icon"
+        ></mat-icon>
         <h2>{{ workoutId ? "Edit" : "Create" }} workout</h2>
       </div>
     </mat-card-header>

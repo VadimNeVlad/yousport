@@ -18,13 +18,14 @@
         </h3>
 
         <div
-          *ngFor="let meal of meals; trackBy: trackMealsById"
+          *ngFor="let meal of meals; trackBy: trackById"
           class="schedule-assign__list-item"
         >
           <mat-checkbox
             class="example-margin"
+            [value]="meal.id"
+            [checked]="isChecked(meal.id)"
             (change)="onChange($event)"
-            [value]="meal.name"
             >{{ meal.name }}</mat-checkbox
           >
         </div>
@@ -36,13 +37,14 @@
         </h3>
 
         <div
-          *ngFor="let workout of workouts; trackBy: trackWorkoutsById"
+          *ngFor="let workout of workouts; trackBy: trackById"
           class="schedule-assign__list-item"
         >
           <mat-checkbox
             class="example-margin"
+            [value]="workout.id"
+            [checked]="isChecked(workout.id)"
             (change)="onChange($event)"
-            [value]="workout.name"
             >{{ workout.name }}</mat-checkbox
           >
         </div>
@@ -52,12 +54,7 @@
     <button mat-raised-button color="primary" (click)="onUpdateSchedule()">
       Update
     </button>
-    <button
-      mat-raised-button
-      color="warn"
-      class="cancel-btn"
-      (click)="onCloseModal()"
-    >
+    <button mat-button class="cancel-btn" (click)="onCloseModal()">
       Cancel
     </button>
   </div>

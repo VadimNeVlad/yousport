@@ -5,7 +5,7 @@
         <mat-icon
           aria-hidden="false"
           aria-label="Example home icon"
-          fontIcon="add"
+          [fontIcon]="mealId ? 'edit' : 'add'"
           class="white-icon"
         ></mat-icon>
         <h2>{{ mealId ? "Edit" : "Create" }} meal</h2>

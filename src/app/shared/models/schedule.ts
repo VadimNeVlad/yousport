@@ -6,14 +6,6 @@ export interface Schedule {
   assignments: Assignment[];
 }
 
-export interface ScheduleItem {
-  id?: number;
-  day?: string;
-  meals?: any[];
-  workouts?: any[];
-  key?: number;
-}
-
 export interface AssignmentData {
   type: string;
   day: string;

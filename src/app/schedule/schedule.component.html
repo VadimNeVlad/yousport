@@ -12,12 +12,25 @@
     </mat-card-header>
 
     <mat-card-content>
-      <div class="schedule__list" *ngIf="schedule$ | async as schedule">
-        <app-schedule-item
-          *ngFor="let assignemt of schedule.assignments"
-          [assignment]="assignemt"
-          (update)="updateSchedule($event)"
-        ></app-schedule-item>
+      <div
+        class="schedule__list"
+        *ngIf="{
+          schedule: schedule$ | async,
+          meals: meals$ | async,
+          workouts: workouts$ | async
+        } as data"
+      >
+        <ng-container *ngIf="data.schedule && data.meals && data.workouts">
+          <mat-accordion multi>
+            <app-schedule-item
+              *ngFor="let assignemt of data.schedule.assignments"
+              [assignment]="assignemt"
+              [meals]="data.meals"
+              [workouts]="data.workouts"
+              (update)="updateSchedule($event)"
+            ></app-schedule-item>
+          </mat-accordion>
+        </ng-container>
       </div>
     </mat-card-content>
   </mat-card>

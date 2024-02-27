@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { HeaderComponent } from './components/header/header.component';
 import { RouterModule } from '@angular/router';
 import { JoinPipe } from './pipes/join.pipe';
@@ -30,6 +31,7 @@ import { WorkoutPipe } from './pipes/workout.pipe';
     HeaderComponent,
     MatIconModule,
     MatProgressSpinnerModule,
+    MatExpansionModule,
     JoinPipe,
     WorkoutPipe,
   ],

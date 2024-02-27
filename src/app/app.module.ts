@@ -12,6 +12,7 @@ import { ScheduleModule } from './schedule/schedule.module';
 import { MealsModule } from './meals/meals.module';
 import { WorkoutsModule } from './workouts/workouts.module';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { CacheInterceptor } from './core/interceptors/cache.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -36,6 +37,7 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
       useClass: AuthInterceptor,
       multi: true,
     },
+    // { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })
