@@ -12,6 +12,8 @@ import { tap } from 'rxjs/operators';
 export class CacheInterceptor implements HttpInterceptor {
   private cache = new Map<string, HttpResponse<any>>();
 
+  constructor() {}
+
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
     if (request.method !== 'GET') {
       return next.handle(request);
@@ -30,4 +32,10 @@ export class CacheInterceptor implements HttpInterceptor {
       })
     );
   }
+
+  invalidateCache() {
+    this.cache.clear();
+  }
+
+  refetchData() {}
 }
