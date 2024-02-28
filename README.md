@@ -17,7 +17,6 @@ A responsive and accessible full stack sport schedule planner web app.
 - TypeScript
 - Rxjs
 - Angular Material
-- RTK Query
 
 > Client: https://yousport.vercel.app
 
