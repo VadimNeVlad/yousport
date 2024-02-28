@@ -52,6 +52,6 @@ export class ScheduleItemComponent {
   }
 
   getCurrentDay(): boolean {
-    return new Date().getDay() === this.assignment.key;
+    return new Date().getDay() === this.assignment.key + 1;
   }
 }
