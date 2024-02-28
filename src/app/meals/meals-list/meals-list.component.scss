@@ -1,3 +1,5 @@
+@import "/src/app/shared/styles/mixins";
+
 .meals-list {
   &__content {
     padding-top: 25px;
@@ -14,12 +16,25 @@
   }
 
   &__empty {
+    font-size: 18px;
+    line-height: 1.2;
+    @include breakpoint(md) {
+      font-size: 22px;
+    }
+
     text-align: center;
     color: #fff;
-    padding-bottom: 30px;
+    padding-bottom: 25px;
+    min-height: 100px;
+    @include breakpoint(md) {
+      min-height: 225px;
+    }
   }
 
   &__loader {
-    min-height: 250px;
+    min-height: 200px;
+    @include breakpoint(md) {
+      min-height: 250px;
+    }
   }
 }

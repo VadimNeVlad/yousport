@@ -30,7 +30,12 @@
         *ngIf="workouts$ | async as workouts; else loading"
         class="workouts-list__content"
       >
-        <h2 *ngIf="!workouts.length" class="workouts-list__empty">
+        <h2
+          *ngIf="!workouts.length"
+          class="workouts-list__empty"
+          fxLayout="row"
+          fxLayoutAlign="center center"
+        >
           No workouts, add new workout to start!
         </h2>
         <app-workouts-item
