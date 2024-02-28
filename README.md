@@ -20,4 +20,5 @@ A responsive and accessible full stack sport schedule planner web app.
 - RTK Query
 
 > Client: https://yousport.vercel.app
+
 > Server: https://github.com/VadimNeVlad/yousport-server
